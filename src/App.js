@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
+import { AnimatePresence, motion } from "framer-motion"
 
 // Components
 import Navigation from './components/Navigation'
@@ -59,23 +60,37 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <Navigation account={account} setAccount={setAccount} />
-      <div className="center">
-      <h2 className="">AmazonW3 Best Sellers</h2></div>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <div>
+          <Navigation account={account} setAccount={setAccount} />
+          <div className="center">
+            <h2 className="">AmazonW3 Best Sellers</h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {electronics && clothing && toys && (
+              <>
+                <Section title={"Clothing & Jewelry"} items={clothing} togglePop={togglePop} />
+                <Section title={"Electronics & Gadgets"} items={electronics} togglePop={togglePop} />
+                <Section title={"Toys & Gaming"} items={toys} togglePop={togglePop} />
+              </>
+            )}
 
-      {electronics && clothing && toys && (
-        <>
-          <Section title={"Clothing & Jewelry"} items={clothing} togglePop={togglePop} />
-          <Section title={"Electronics & Gadgets"} items={electronics} togglePop={togglePop} />
-          <Section title={"Toys & Gaming"} items={toys} togglePop={togglePop} />
-        </>
-      )}
-
-      {toggle && (
-        <Product item={item} provider={provider} account={account} dappazon={dappazon} togglePop={togglePop} />
-      )}
-    </div>
+            {toggle && (
+              <Product item={item} provider={provider} account={account} dappazon={dappazon} togglePop={togglePop} />
+            )}
+          </motion.div>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
