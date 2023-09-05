@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
@@ -18,7 +22,7 @@
 
 body {
   margin: 0;
-  font-family: "Open Sans";
+  font-family: "Poppins", "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -34,6 +38,11 @@ h2:not(.product__overview h2) {
   padding-left: 20px;
 }
 
+.center{
+  display:flex;
+  justify-content:center;
+}
+
 /* ------------------------------------------------------ */
 /* -- NAVIGATION -- */
 
@@ -41,8 +50,8 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-
   background-color: var(--clr-bunker);
+ 
 }
 
 .nav__brand {
@@ -128,11 +137,13 @@ nav {
   max-width: 1200px;
   margin: 0 auto 50px;
   padding: 0 20px;
+  
 }
 
 .cards__section h3 {
   font-size: 1.75em;
   margin: 20px 0;
+  
 }
 
 .cards {
@@ -140,6 +151,7 @@ nav {
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
   margin-top: 20px;
+  
 }
 
 .card {
@@ -152,6 +164,7 @@ nav {
   position: relative;
 
   transition: all 250ms ease;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .card:hover {
